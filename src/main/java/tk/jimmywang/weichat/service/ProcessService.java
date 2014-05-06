@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tk.jimmywang.weichat.controller.WeiChatApiController;
 import tk.jimmywang.weichat.entity.response.Article;
 import tk.jimmywang.weichat.entity.response.NewsMessage;
+import tk.jimmywang.weichat.entity.response.TextMessage;
 import tk.jimmywang.weichat.util.MessageUtil;
 
 public class ProcessService {
@@ -93,14 +93,17 @@ public class ProcessService {
 			else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {
 				logger.info("into image");
 				respMessage = "您发送的是图片消息！";
-				// ImageMessage imageMessage=new ImageMessage();
-				// imageMessage.setToUserName(fromUserName);
-				// imageMessage.setFromUserName(toUserName);
-				// imageMessage.setCreateTime(new Date().getTime());
-				// imageMessage.setMsgType(MessageUtil.REQ_MESSAGE_TYPE_IMAGE);
-				// imageMessage.setFuncFlag(0);
-				// imageMessage.setPicUrl("http://202.102.83.54/4sWeixin/img/pic/xtp.png");
-				// respMessage = MessageUtil.imageMessageToXml(imageMessage);
+				// // 回复文本消息
+				 TextMessage textMessage = new TextMessage();
+				// //开发者
+				 textMessage.setToUserName(fromUserName);
+				// //发送方帐号（一个OpenID）
+				 textMessage.setFromUserName(toUserName);
+				 textMessage.setCreateTime(new Date().getTime());
+				 textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+				 textMessage.setContent("您好，已收到您的图片消息！");
+				 textMessage.setFuncFlag(0);
+				 respMessage = MessageUtil.textMessageToXml(textMessage);
 
 			}
 			// 地理位置消息
