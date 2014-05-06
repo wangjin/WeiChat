@@ -7,6 +7,8 @@ import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,9 +18,11 @@ import tk.jimmywang.weichat.util.AuthUtil;
 
 @Controller
 public class WeiChatApiController {
+	
+	private Logger logger  = LoggerFactory.getLogger(WeiChatApiController.class);
 
 	public static final String TOKEN = "WEICHATTOKEN";
-
+	
 	@RequestMapping(value = "/weichatapi", method = RequestMethod.GET)
 	public void weiChatApiGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
@@ -55,7 +59,9 @@ public class WeiChatApiController {
 
 		PrintWriter writer = response.getWriter();
 
-		writer.write(ProcessService.processRequest(request));
+		String processRequest = ProcessService.processRequest(request);
+		logger.info("processRequest", processRequest);
+		writer.write(processRequest);
 		writer.close();
 
 	}

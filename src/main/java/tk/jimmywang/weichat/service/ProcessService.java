@@ -7,13 +7,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import tk.jimmywang.weichat.controller.WeiChatApiController;
 import tk.jimmywang.weichat.entity.response.Article;
 import tk.jimmywang.weichat.entity.response.NewsMessage;
 import tk.jimmywang.weichat.util.MessageUtil;
 
 public class ProcessService {
+	
+	
 
 	public static String processRequest(HttpServletRequest request) {
+		Logger logger  = LoggerFactory.getLogger(ProcessService.class);
 		String respMessage = null;
 		try {
 
@@ -26,9 +33,16 @@ public class ProcessService {
 			String toUserName = requestMap.get("ToUserName");
 			// 消息类型
 			String msgType = requestMap.get("MsgType");
+			
+			logger.info("msgType", msgType);
 
 			// 文本消息
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
+				
+				logger.info("into text");
+				
+				
+				
 				// // 回复文本消息
 				// TextMessage textMessage = new TextMessage();
 				// //开发者
@@ -77,6 +91,7 @@ public class ProcessService {
 			}
 			// 图片消息
 			else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {
+				logger.info("into image");
 				respMessage = "您发送的是图片消息！";
 				// ImageMessage imageMessage=new ImageMessage();
 				// imageMessage.setToUserName(fromUserName);
