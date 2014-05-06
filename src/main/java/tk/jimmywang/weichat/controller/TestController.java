@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.controller;
+package tk.jimmywang.weichat.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

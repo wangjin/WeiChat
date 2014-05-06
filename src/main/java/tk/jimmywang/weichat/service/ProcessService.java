@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.service;
+package tk.jimmywang.weichat.service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,9 +7,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import tk.wangjinzone.weichat.entity.response.Article;
-import tk.wangjinzone.weichat.entity.response.NewsMessage;
-import tk.wangjinzone.weichat.util.MessageUtil;
+import tk.jimmywang.weichat.entity.response.Article;
+import tk.jimmywang.weichat.entity.response.NewsMessage;
+import tk.jimmywang.weichat.util.MessageUtil;
 
 public class ProcessService {
 

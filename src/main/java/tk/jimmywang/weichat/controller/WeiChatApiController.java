@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.controller;
+package tk.jimmywang.weichat.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import tk.wangjinzone.weichat.service.ProcessService;
-import tk.wangjinzone.weichat.util.AuthUtil;
+import tk.jimmywang.weichat.service.ProcessService;
+import tk.jimmywang.weichat.util.AuthUtil;
 
 @Controller
 public class WeiChatApiController {

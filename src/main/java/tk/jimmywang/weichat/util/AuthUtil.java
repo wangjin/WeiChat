@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.util;
+package tk.jimmywang.weichat.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

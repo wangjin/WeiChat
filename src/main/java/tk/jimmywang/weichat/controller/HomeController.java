@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.controller;
+package tk.jimmywang.weichat.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

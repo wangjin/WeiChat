@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.entity.response;
+package tk.jimmywang.weichat.entity.response;
 
 /**
  * 图文model

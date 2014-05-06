@@ -1,10 +1,10 @@
-package tk.wangjinzone.weichat.entity.request;
+package tk.jimmywang.weichat.entity.response;
 
 /**
  * 文本消息
  */
 public class TextMessage extends BaseMessage {
-	// 消息内容
+	// 回复的消息内容
 	private String Content;
 
 	public String getContent() {

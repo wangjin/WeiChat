@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.entity.request;
+package tk.jimmywang.weichat.entity.request;
 
 /**
  * 音频消息

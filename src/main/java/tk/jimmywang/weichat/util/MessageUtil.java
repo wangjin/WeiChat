@@ -1,4 +1,4 @@
-package tk.wangjinzone.weichat.util;
+package tk.jimmywang.weichat.util;
 
 import java.io.InputStream;
 import java.io.Writer;
@@ -18,11 +18,11 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
 
-import tk.wangjinzone.weichat.entity.response.Article;
-import tk.wangjinzone.weichat.entity.response.ImageMessage;
-import tk.wangjinzone.weichat.entity.response.MusicMessage;
-import tk.wangjinzone.weichat.entity.response.NewsMessage;
-import tk.wangjinzone.weichat.entity.response.TextMessage;
+import tk.jimmywang.weichat.entity.response.Article;
+import tk.jimmywang.weichat.entity.response.ImageMessage;
+import tk.jimmywang.weichat.entity.response.MusicMessage;
+import tk.jimmywang.weichat.entity.response.NewsMessage;
+import tk.jimmywang.weichat.entity.response.TextMessage;
 
 /** 
  * 消息工具类 

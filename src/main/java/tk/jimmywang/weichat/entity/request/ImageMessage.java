@@ -1,10 +1,9 @@
-package tk.wangjinzone.weichat.entity.response;
+package tk.jimmywang.weichat.entity.request;
 
 /**
  * 图片消息
  */
 public class ImageMessage extends BaseMessage {
-
 	// 图片链接
 	private String PicUrl;
 
@@ -15,5 +14,4 @@ public class ImageMessage extends BaseMessage {
 	public void setPicUrl(String picUrl) {
 		PicUrl = picUrl;
 	}
-
 }
