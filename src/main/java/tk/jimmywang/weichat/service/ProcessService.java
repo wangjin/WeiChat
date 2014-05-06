@@ -66,8 +66,8 @@ public class ProcessService {
 				Article article1 = new Article();
 				article1.setTitle("开发测试");
 				article1.setDescription("这是一个开发测试");
-				article1.setPicUrl("http://weichat.wangjinzone.tk/resources/images/car.jpg");
-				article1.setUrl("http://weichat.wangjinzone.tk/");
+				article1.setPicUrl("http://weichat.jimmywang.tk/resources/images/car.jpg");
+				article1.setUrl("http://weichat.jimmywang.tk/");
 				// article1.setUrl("http://user.qzone.qq.com/652810758?ptlang=2052");
 
 				Article article2 = new Article();
