@@ -9,17 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import tk.jimmywang.weichat.entity.response.Article;
 import tk.jimmywang.weichat.entity.response.NewsMessage;
 import tk.jimmywang.weichat.entity.response.TextMessage;
 import tk.jimmywang.weichat.util.MessageUtil;
 
+@Component
 public class ProcessService {
 	
+	@Autowired
+	private MessageService messageService;
 	
-
-	public static String processRequest(HttpServletRequest request) {
+	public String processRequest(HttpServletRequest request) {
+		
 		Logger logger  = LoggerFactory.getLogger(ProcessService.class);
 		String respMessage = null;
 		try {
@@ -34,60 +39,22 @@ public class ProcessService {
 			// 消息类型
 			String msgType = requestMap.get("MsgType");
 			
-			logger.info("msgType", msgType);
+			logger.info("[msgType]" + msgType);
 
 			// 文本消息
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
 				
-				logger.info("into text");
 				
-				
-				
-				// // 回复文本消息
-				// TextMessage textMessage = new TextMessage();
+				 TextMessage textMessage = new TextMessage();
 				// //开发者
-				// textMessage.setToUserName(fromUserName);
+				 textMessage.setToUserName(fromUserName);
 				// //发送方帐号（一个OpenID）
-				// textMessage.setFromUserName(toUserName);
-				// textMessage.setCreateTime(new Date().getTime());
-				// textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
-				// textMessage.setContent("你好！");
-				// textMessage.setFuncFlag(0);
-				// respMessage = MessageUtil.textMessageToXml(textMessage);
-				// 创建图文消息
-				NewsMessage newsMessage = new NewsMessage();
-				newsMessage.setToUserName(fromUserName);
-				newsMessage.setFromUserName(toUserName);
-				newsMessage.setCreateTime(new Date().getTime());
-				newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
-				newsMessage.setFuncFlag(0);
-
-				List<Article> articleList = new ArrayList<Article>();
-				Article article1 = new Article();
-				article1.setTitle("开发测试");
-				article1.setDescription("这是一个开发测试");
-				article1.setPicUrl("http://weichat.jimmywang.tk/resources/images/car.jpg");
-				article1.setUrl("http://weichat.jimmywang.tk/");
-				// article1.setUrl("http://user.qzone.qq.com/652810758?ptlang=2052");
-
-				Article article2 = new Article();
-				article2.setTitle("第2篇\n微信公众帐号的类型");
-				article2.setDescription("");
-				article2.setPicUrl("http://202.102.83.54/4sWeixin/img/pic/xtp.png");
-				article2.setUrl("http://www.ibrdp.com/WeiXinTest/Driving!drivingList.action");
-
-				// Article article3 = new Article();
-				// article3.setTitle("第3篇\n开发模式启用及接口配置");
-				// article3.setDescription("");
-				// article3.setPicUrl("http://avatar.csdn.net/1/4/A/1_lyq8479.jpg");
-				// article3.setUrl("http://blog.csdn.net/lyq8479/article/details/8944988");
-
-				articleList.add(article1);
-				// articleList.add(article2);
-				// articleList.add(article3);
-				newsMessage.setArticleCount(articleList.size());
-				newsMessage.setArticles(articleList);
-				respMessage = MessageUtil.newsMessageToXml(newsMessage);
+				 textMessage.setFromUserName(toUserName);
+				 textMessage.setCreateTime(new Date().getTime());
+				 textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+				 textMessage.setContent(messageService.mainMenu());
+				 textMessage.setFuncFlag(0);
+				 respMessage = MessageUtil.textMessageToXml(textMessage);
 			}
 			// 图片消息
 			else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {
