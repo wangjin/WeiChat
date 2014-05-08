@@ -1,6 +1,10 @@
 package tk.jimmywang.weichat.service;
 
+import java.io.UnsupportedEncodingException;
+
 import org.springframework.stereotype.Component;
+
+import tk.jimmywang.weichat.util.PunctuationConvert;
 
 @Component
 public class MessageService {
@@ -22,36 +26,42 @@ public class MessageService {
 
 	public String menuProcess(String content) {
 		String respMessage = "";
-		if ("?".equals(content)||"？".equals(content)) {
-			respMessage = this.mainMenu();
-		} else {
-			switch (Integer.parseInt(content)) {
-			case 1:
-				respMessage = "天气预报正在建设中...";
-				break;
-			case 2:
-				respMessage = "公交查询正在建设中...";
-				break;
-			case 3:
-				respMessage = "周边搜索正在建设中...";
-				break;
-			case 4:
-				respMessage = "歌曲点播正在建设中...";
-				break;
-			case 5:
-				respMessage = "经典游戏正在建设中...";
-				break;
-			case 6:
-				respMessage = "美女电台正在建设中...";
-				break;
-			case 7:
-				respMessage = "人脸识别正在建设中...";
-				break;
-			case 8:
-				respMessage = "聊天唠嗑正在建设中...";
-				break;
+		try {
+			if ("?".equals(PunctuationConvert.full2HalfChange(content))) {
+				respMessage = this.mainMenu();
+			} else {
+				switch (Integer.parseInt(content)) {
+				case 1:
+					respMessage = "天气预报正在建设中...";
+					break;
+				case 2:
+					respMessage = "公交查询正在建设中...";
+					break;
+				case 3:
+					respMessage = "周边搜索正在建设中...";
+					break;
+				case 4:
+					respMessage = "歌曲点播正在建设中...";
+					break;
+				case 5:
+					respMessage = "经典游戏正在建设中...";
+					break;
+				case 6:
+					respMessage = "美女电台正在建设中...";
+					break;
+				case 7:
+					respMessage = "人脸识别正在建设中...";
+					break;
+				case 8:
+					respMessage = "聊天唠嗑正在建设中...";
+					break;
 
+				}
 			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
 		return respMessage;
 	}
